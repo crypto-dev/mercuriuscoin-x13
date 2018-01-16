@@ -1,6 +1,6 @@
 TEMPLATE = app
 TARGET = Mercurius-Qt
-VERSION = 1.2.0.1
+VERSION = 2.4.0.1
 INCLUDEPATH += src src/json src/qt
 DEFINES += QT_GUI BOOST_THREAD_USE_LIB BOOST_SPIRIT_THREADSAFE
 QT += core gui network
@@ -17,15 +17,15 @@ macx {
 #
                 BOOST_INCLUDE_PATH=/usr/local/Cellar/boost/1.65.1/include
                 BOOST_LIB_PATH=/usr/local/Cellar/boost/1.65.1/lib
-                BDB_INCLUDE_PATH=/usr/local/Cellar/berkeley-db@4/4.8.30/include
-                BDB_LIB_PATH=/usr/local/Cellar/berkeley-db@4/4.8.30/lib
+                BDB_INCLUDE_PATH=/usr/local/Cellar/berkeley-db@5.3/5.3.28.NC.brew/include
+                BDB_LIB_PATH=/usr/local/Cellar/berkeley-db@5.3/5.3.28.NC.brew/lib
                 OPENSSL_INCLUDE_PATH=/usr/local/Cellar/openssl/1.0.2l/include
                 OPENSSL_LIB_PATH=/usr/local/Cellar/openssl/1.0.2l/lib
                 QRENCODE_INCLUDE_PATH=/usr/local/Cellar/qrencode/4.0.0/include
                 QRENCODE_LIB_PATH=/usr/local/Cellar/qrencode/4.0.0/lib
                 MINIUPNPC_INCLUDE_PATH=/usr/local/Cellar/miniupnpc/2.0.20170509/include
                 MINIUPNPC_LIB_PATH=/usr/local/Cellar/miniupnpc/2.0.20170509/lib
-                BDB_LIB_SUFFIX=-4.8
+                BDB_LIB_SUFFIX=-5.3
                 }
                 
 # for boost 1.37, add -mt to the boost libraries
@@ -50,10 +50,10 @@ macx:OBJECTIVE_SOURCES += src/qt/macdockiconhandler.mm src/qt/macnotificationhan
 # use: qmake "RELEASE=1"
 contains(RELEASE, 1) {
     # Mac: compile for maximum compatibility (10.5, 32-bit)
-    macx:QMAKE_CXXFLAGS += -mmacosx-version-min=10.7 -static-libstdc++ -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk
-    macx:QMAKE_CFLAGS += -mmacosx-version-min=10.7 -static-libstdc++ -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk
-    macx:QMAKE_LFLAGS += -mmacosx-version-min=10.7 -static-libstdc++ -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk
-    macx:QMAKE_OBJECTIVE_CFLAGS += -mmacosx-version-min=10.7 -static-libstdc++ -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk
+    macx:QMAKE_CXXFLAGS += -mmacosx-version-min=10.7 -stdlib=libc++ -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk
+    macx:QMAKE_CFLAGS += -mmacosx-version-min=10.7 -stdlib=libc++ -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk
+    macx:QMAKE_LFLAGS += -mmacosx-version-min=10.7 -stdlib=libc++ -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk
+    macx:QMAKE_OBJECTIVE_CFLAGS += -mmacosx-version-min=10.7 -stdlib=libc++ -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk
 #-static-libstdc++
 #-stdlib=libc++
     !windows:!macx {
